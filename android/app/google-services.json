@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "569324598885",
+    "project_id": "gctu-news",
+    "storage_bucket": "gctu-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569324598885:android:76ce9bb3f213fd1736388c",
+        "android_client_info": {
+          "package_name": "com.example.newsportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569324598885-nm065vhf0f57ookusduvd20eaqscaeul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTD-F6BhKxOaJTXVWHgIdQiK6pqMvuipg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569324598885-nm065vhf0f57ookusduvd20eaqscaeul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
