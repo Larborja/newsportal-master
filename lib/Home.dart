@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
 
 late StreamSubscription<QuerySnapshot>subscription;
 
-late List<DocumentSnapshot>snapshot;
+ List<DocumentSnapshot>?snapshot;
 final FirebaseFirestore _firestore=FirebaseFirestore.instance;
 
 CollectionReference collectionReference=FirebaseFirestore.instance.collection("LatestPost");
@@ -29,7 +29,7 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
 
   subscription=collectionReference.snapshots().listen((datasnap) {
     setState(() {
-      snapshot=datasnap.docs;
+      snapshot = datasnap.docs;
     });
   });
 
@@ -38,29 +38,29 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
 
   @override
   Widget build(BuildContext context) {
-    var snapshot;
+
     return Scaffold(
       appBar: new AppBar(
         title: new Text("GCTU News Portal"),
         backgroundColor: Color(0xFF222240),
       ),
-      drawer: new Drawer(
+      drawer: Drawer(
 
         child: Container(
           color: Color(0xFF272B4A),
-          child: new ListView(
+          child: ListView(
             children: <Widget> [
 
-              new UserAccountsDrawerHeader(
-                  accountName: new Text("GCTU News Portal"),
+              const UserAccountsDrawerHeader(
+                  accountName: Text("GCTU News Portal"),
                   accountEmail: null,
-                decoration: new BoxDecoration(
+                decoration: BoxDecoration(
                   color: Color(0xFF222240)
                 ),
               ),
 
-              new ListTile(
-                title: new Text("Satellite Campus News",
+              ListTile(
+                title: Text("Satellite Campus News",
                 style: TextStyle(
                 fontSize: 20.0,
                   color: Colors.white,
@@ -72,8 +72,8 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
                 leading: new Icon(Icons.next_week,color: Colors.white,size: 20.0,),
                 ),
 
-              new ListTile(
-                title: new Text("Sport News",
+              ListTile(
+                title: Text("Sport News",
                   style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.white,
@@ -119,10 +119,10 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
 
       backgroundColor: Color(0xFF222240),
 
-      body: new ListView(
+      body: ListView(
           children: <Widget>[
             //First Container start
-            new Container(
+            Container(
               height: 190.0,
               margin: EdgeInsets.only(top:10.0,left: 0.0),
               child: new Column(
@@ -142,7 +142,7 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
                     margin: EdgeInsets.only(top:10.0),
                     child: new ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: snapshot,
+                        itemCount: snapshot?.length,
                         itemBuilder: (context,index){
                           return Container(
                             width: 300.0,
@@ -155,7 +155,7 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
                                   flex: 1,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(15.0),
-                                    child: new Image.network(snapshot[index].data["image"],
+                                    child: new Image.network(snapshot?[index]["image"]??"",
                                       height: 130.0,
                                       fit: BoxFit.cover,
                                     ),
@@ -171,9 +171,9 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
                                       children: <Widget>[
                                         InkWell(
                                           onTap: (){
-                                            Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>HomePageDetails(snapshot[index])));
+                                            Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>HomePageDetails(snapshot![index])));
                                           },
-                                          child: new Text(snapshot[index].data["title"],
+                                          child: new Text(snapshot?[index]["title"],
                                             maxLines: 1,
                                             style: TextStyle(
                                                 fontSize: 21.0,
@@ -182,7 +182,7 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
                                           ),
                                         ),
                                         new SizedBox(height: 10.0,),
-                                        new Text(snapshot[index].data["des"],
+                                        new Text(snapshot?[index]["des"]??"",
                                           maxLines: 3,
                                           style: TextStyle(
                                               fontSize: 17.0,
