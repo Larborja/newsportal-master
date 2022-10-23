@@ -22,7 +22,7 @@ class _LocalAllNewsState extends State<LocalAllNews> {
     subscription=collectionReference.snapshots().listen((datasnap){
 
       setState(() {
-        snapshot=datasnap.documents;
+        snapshot=datasnap.docs;
       });
 
     });
@@ -39,7 +39,7 @@ class _LocalAllNewsState extends State<LocalAllNews> {
 
 
       body: new ListView.builder(
-          itemCount: snapshot.length,
+          itemCount: snapshot?.length,
           itemBuilder: (context,index){
 
             return Container(
@@ -56,7 +56,7 @@ class _LocalAllNewsState extends State<LocalAllNews> {
                     flex: 1,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
-                      child: new Image.network(snapshot[index].data["image"],
+                      child: new Image.network(snapshot?[index]["image"],
                         height: 170.0,
                         fit: BoxFit.cover,
                       ),
@@ -70,7 +70,7 @@ class _LocalAllNewsState extends State<LocalAllNews> {
                     child: new Column(
                       children: <Widget>[
 
-                        new Text(snapshot[index].data["title"],
+                        new Text(snapshot?[index]["title"],
                           maxLines: 1,
                           style: TextStyle(
                               fontSize: 19.0,
@@ -79,7 +79,7 @@ class _LocalAllNewsState extends State<LocalAllNews> {
                         ),
                         new SizedBox(height: 5.0,),
 
-                        new Text(snapshot[index].data["des"],
+                        new Text(snapshot?[index]["des"],
                           maxLines: 4,
                           style: TextStyle(
                               fontSize: 15.0,
@@ -101,7 +101,7 @@ class _LocalAllNewsState extends State<LocalAllNews> {
                                       color: Colors.deepOrange,
                                     ),
                                     new SizedBox(width: 5.0,),
-                                    new Text(snapshot[index].data["view"]+"View",
+                                    new Text(snapshot?[index]["view"]+"View",
                                       style: TextStyle(
                                           fontSize: 14.0,
                                           color: Colors.blueGrey.withOpacity(1.0)
@@ -122,7 +122,7 @@ class _LocalAllNewsState extends State<LocalAllNews> {
                                     ),
                                     child: InkWell(
                                       onTap: (){
-                                        Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>LocalPostDetails(snapshot[index])));
+                                        Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>LocalPostDetails(snapshot![index])));
                                       },
                                       child: new Text("View Details",
                                         style: TextStyle(

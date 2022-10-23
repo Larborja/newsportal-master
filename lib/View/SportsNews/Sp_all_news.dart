@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
-import 'package:flutter_news2/View/SportsNews/SportPostDetails.dart';
+import 'package:newsportal/View/SportsNews/SportPostDetails.dart';
 
 class SportsAllNews extends StatefulWidget {
   @override
@@ -9,11 +9,11 @@ class SportsAllNews extends StatefulWidget {
 }
 
 class _SportsAllNewsState extends State<SportsAllNews> {
-  StreamSubscription<QuerySnapshot>subscription;
+  StreamSubscription<QuerySnapshot>?subscription;
 
-  List<DocumentSnapshot>snapshot;
+  List<DocumentSnapshot>?snapshot;
 
-  CollectionReference collectionReference=Firestore.instance.collection("InternationalNews");
+  CollectionReference collectionReference=FirebaseFirestore.instance.collection("InternationalNews");
 
   @override
   void initState() {
@@ -21,7 +21,7 @@ class _SportsAllNewsState extends State<SportsAllNews> {
     subscription=collectionReference.snapshots().listen((datasnap){
 
       setState(() {
-        snapshot=datasnap.documents;
+        snapshot=datasnap.docs;
       });
 
     });
@@ -34,7 +34,7 @@ class _SportsAllNewsState extends State<SportsAllNews> {
       backgroundColor: Color(0xFF222240),
 
       body: new ListView.builder(
-          itemCount: snapshot.length,
+          itemCount: snapshot?.length,
           itemBuilder: (context,index){
 
             return Container(
@@ -50,7 +50,7 @@ class _SportsAllNewsState extends State<SportsAllNews> {
                     flex: 1,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
-                      child: new Image.network(snapshot[index].data["image"],
+                      child: new Image.network(snapshot?[index]["image"],
                         height: 170.0,
                         fit: BoxFit.cover,
                       ),
@@ -64,7 +64,7 @@ class _SportsAllNewsState extends State<SportsAllNews> {
                     child: new Column(
                       children: <Widget>[
 
-                        new Text(snapshot[index].data["title"],
+                        new Text(snapshot?[index]["title"],
                           maxLines: 1,
                           style: TextStyle(
                               fontSize: 19.0,
@@ -73,7 +73,7 @@ class _SportsAllNewsState extends State<SportsAllNews> {
                         ),
                         new SizedBox(height: 5.0,),
 
-                        new Text(snapshot[index].data["des"],
+                        new Text(snapshot?[index]["des"],
                           maxLines: 4,
                           style: TextStyle(
                               fontSize: 15.0,
@@ -95,7 +95,7 @@ class _SportsAllNewsState extends State<SportsAllNews> {
                                       color: Colors.deepOrange,
                                     ),
                                     new SizedBox(width: 5.0,),
-                                    new Text(snapshot[index].data["view"]+"View",
+                                    new Text(snapshot?[index]["view"]+"View",
                                       style: TextStyle(
                                           fontSize: 14.0,
                                           color: Colors.blueGrey.withOpacity(1.0)
@@ -116,7 +116,7 @@ class _SportsAllNewsState extends State<SportsAllNews> {
                                     ),
                                     child: InkWell(
                                       onTap: (){
-                                        Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>SportsPostDetails(snapshot[index])));
+                                        Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>SportsPostDetails(snapshot![index])));
                                       },
                                       child: new Text("View Details",
                                         style: TextStyle(

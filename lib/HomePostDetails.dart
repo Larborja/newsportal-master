@@ -32,7 +32,7 @@ class _HomePageDetailsState extends State<HomePageDetails> {
             margin: EdgeInsets.all(10.0),
             child: new ClipRRect(
               borderRadius: BorderRadius.circular(15.0),
-              child: new Image.network(widget.snapshot.data["image"],
+              child: new Image.network(widget.snapshot["image"],
                 height: 250.0,
                 fit: BoxFit.cover,
               ),
@@ -56,7 +56,7 @@ class _HomePageDetailsState extends State<HomePageDetails> {
                     children: <Widget>[
 
                       new CircleAvatar(
-                        child: new Text(widget.snapshot.data["title"][0]),
+                        child: new Text(widget.snapshot["title"][0]),
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.deepOrange,
                       ),
@@ -64,7 +64,7 @@ class _HomePageDetailsState extends State<HomePageDetails> {
 
                       new Container(
                           width: MediaQuery.of(context).size.width/1.3,
-                          child:new Text(widget.snapshot.data["title"],
+                          child:new Text(widget.snapshot["title"],
                             style: TextStyle(
                                 fontSize: 17.0,
                                 color: Colors.white
@@ -78,7 +78,7 @@ class _HomePageDetailsState extends State<HomePageDetails> {
                 ),//end of first container
                 new SizedBox(height: 10.0,),
 
-                new Text(widget.snapshot.data.data()["des"]??'',
+                new Text(widget.snapshot["des"]??'',
                   style: TextStyle(
                       fontSize: 17.0,
                       color: Colors.white

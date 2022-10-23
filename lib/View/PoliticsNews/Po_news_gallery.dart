@@ -8,18 +8,18 @@ class PoliticsGallery extends StatefulWidget {
 }
 
 class _PoliticsGalleryState extends State<PoliticsGallery> {
-  StreamSubscription<QuerySnapshot>subscription;
+  StreamSubscription<QuerySnapshot>?subscription;
 
-  List<DocumentSnapshot>snapshot;
+  List<DocumentSnapshot>?snapshot;
 
-  CollectionReference collectionReference=Firestore.instance.collection("InternationalNews");
+  CollectionReference collectionReference=FirebaseFirestore.instance.collection("InternationalNews");
 
   @override
   void initState() {
 
     subscription=collectionReference.snapshots().listen((datasnap){
       setState(() {
-        snapshot=datasnap.documents;
+        snapshot=datasnap.docs;
       });
     });
     super.initState();
@@ -32,7 +32,7 @@ class _PoliticsGalleryState extends State<PoliticsGallery> {
       backgroundColor: Color(0xFF222240),
 
       body: new ListView.builder(
-          itemCount: snapshot.length,
+          itemCount: snapshot?.length,
           itemBuilder: (context,index){
 
             return Container(
@@ -43,7 +43,7 @@ class _PoliticsGalleryState extends State<PoliticsGallery> {
                   new Container(
                     child: new ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
-                      child: new Image.network(snapshot[index].data["image"],
+                      child: new Image.network(snapshot?[index]["image"],
                         height: 300.0,
                         fit: BoxFit.cover,
                       ),

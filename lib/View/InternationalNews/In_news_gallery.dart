@@ -8,16 +8,16 @@ class In_Gallery extends StatefulWidget {
 }
 class _In_GalleryState extends State<In_Gallery> {
 
-  StreamSubscription<QuerySnapshot>subscription;
+  StreamSubscription<QuerySnapshot>?subscription;
 
-  List<DocumentSnapshot>snapshot;
-  CollectionReference collectionReference=Firestore.instance.collection("InternationalNews");
+  List<DocumentSnapshot>?snapshot;
+  CollectionReference collectionReference=FirebaseFirestore.instance.collection("InternationalNews");
 
   @override
   void initState() {
     subscription=collectionReference.snapshots().listen((datasnap){
       setState(() {
-        snapshot=datasnap.documents;
+        snapshot=datasnap.docs;
       });
     });
     super.initState();
@@ -27,7 +27,7 @@ class _In_GalleryState extends State<In_Gallery> {
     return new Scaffold(
       backgroundColor: Color(0xFF222240),
       body: new ListView.builder(
-        itemCount: snapshot.length,
+        itemCount: snapshot?.length,
         itemBuilder: (context,index){
           return Container(
             margin: EdgeInsets.all(10.0),
@@ -36,7 +36,7 @@ class _In_GalleryState extends State<In_Gallery> {
                 new Container(
                   child: new ClipRRect(
                     borderRadius: BorderRadius.circular(15.0),
-                    child: new Image.network(snapshot[index].data["image"],
+                    child: new Image.network(snapshot?[index]["image"],
                     height: 300.0,
                       fit: BoxFit.cover,
                     ),

@@ -33,7 +33,7 @@ class _PostDetailsState extends State<PostDetails> {
             margin: EdgeInsets.all(10.0),
             child: new ClipRRect(
               borderRadius: BorderRadius.circular(15.0),
-              child: new Image.network(widget.snapshot.data["image"],
+              child: new Image.network(widget.snapshot["image"],
               height: 250.0,
                 fit: BoxFit.cover,
               ),
@@ -57,7 +57,7 @@ class _PostDetailsState extends State<PostDetails> {
                     children: <Widget>[
                       
                       new CircleAvatar(
-                        child: new Text(widget.snapshot.data["title"][0]),
+                        child: new Text(widget.snapshot["title"][0]),
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.deepOrange,
                       ),
@@ -65,7 +65,7 @@ class _PostDetailsState extends State<PostDetails> {
 
                       new Container(
                           width: MediaQuery.of(context).size.width/1.3,
-                          child:new Text(widget.snapshot.data["title"],
+                          child:new Text(widget.snapshot["title"],
                             style: TextStyle(
                                 fontSize: 17.0,
                                 color: Colors.white
@@ -80,7 +80,7 @@ class _PostDetailsState extends State<PostDetails> {
                 //second container
                 new Container(
                   margin: EdgeInsets.all(10.0),
-                  child: new Text(widget.snapshot.data["view"]+" View",
+                  child: new Text(widget.snapshot["view"]+" View",
                   style: TextStyle(
                     fontSize: 21.0,
                     color: Colors.deepOrange
@@ -90,7 +90,7 @@ class _PostDetailsState extends State<PostDetails> {
 
                 new SizedBox(height: 10.0,),
 
-                new Text(widget.snapshot.data["des"],
+                new Text(widget.snapshot["des"],
                 style: TextStyle(
                   fontSize: 17.0,
                   color: Colors.white
