@@ -1,3 +1,5 @@
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
@@ -5,6 +7,8 @@ import 'dart:async';
 import 'Controller/InternationalNews.dart';
 import 'Controller/LocalNews.dart';
 import 'Controller/PoliticNews.dart';
+import 'Controller/SportsNews.dart';
+import 'HomePostDetails.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -138,7 +142,7 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
                     margin: EdgeInsets.only(top:10.0),
                     child: new ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: snapshot.length,
+                        itemCount: snapshot,
                         itemBuilder: (context,index){
                           return Container(
                             width: 300.0,
@@ -232,35 +236,20 @@ CollectionReference collectionReference=FirebaseFirestore.instance.collection("L
                   borderRadius: BorderRadius.circular(20.0)
               ),
               child: Center(
-                child: Container(
-                  height: 350.0,
-                  width: MediaQuery.of(context).size.width,
-                  child: Carousel(
-                    boxFit: BoxFit.cover,
-                    autoplay: true,
-                    animationCurve: Curves.fastOutSlowIn,
-                    animationDuration: Duration(milliseconds: 1000),
-                    dotSize: 7.0,
-                    dotIncreasedColor: Colors.red,
-                    dotBgColor: Colors.transparent,
-                    dotPosition: DotPosition.bottomCenter,
-                    dotVerticalPadding: 7.0,
-                    showIndicator: true,
-                    borderRadius: true,
-                    indicatorBgPadding: 10.0,
-                    overlayShadow: true,
-                    overlayShadowColors: Colors.black.withOpacity(0.4),
-                    overlayShadowSize: 10.0,
-
-                    images: [
-                      NetworkImage('https://images.pexels.com/photos/344029/pexels-photo-344029.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
-                      NetworkImage('https://images.pexels.com/photos/1618269/pexels-photo-1618269.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
-                      NetworkImage('https://images.pexels.com/photos/2081007/pexels-photo-2081007.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
-                      NetworkImage('https://images.pexels.com/photos/1332237/pexels-photo-1332237.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
-
-                    ],
-                  ),
-                ),
+                // child: Container(
+                //   height: 350.0,
+                //   width: MediaQuery.of(context).size.width,
+                //   child: CarouselSlider(
+                //
+                //     items: [
+                //       NetworkImage('https://images.pexels.com/photos/344029/pexels-photo-344029.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
+                //       NetworkImage('https://images.pexels.com/photos/1618269/pexels-photo-1618269.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
+                //       NetworkImage('https://images.pexels.com/photos/2081007/pexels-photo-2081007.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
+                //       NetworkImage('https://images.pexels.com/photos/1332237/pexels-photo-1332237.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
+                //
+                //     ],
+                //   ),
+                // ),
               ),
             ),
             //second container end..
