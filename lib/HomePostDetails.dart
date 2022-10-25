@@ -78,12 +78,12 @@ class _HomePageDetailsState extends State<HomePageDetails> {
                 ),//end of first container
                 new SizedBox(height: 10.0,),
 
-                new Text(widget.snapshot["des"]??'',
-                  style: TextStyle(
-                      fontSize: 17.0,
-                      color: Colors.white
-                  ),
-                )
+                // new Text(widget.snapshot["des"]??'',
+                //   style: TextStyle(
+                //       fontSize: 17.0,
+                //       color: Colors.white
+                //   ),
+                // )
               ],
             ),
           ),

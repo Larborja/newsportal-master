@@ -200,8 +200,7 @@ class _HomeState extends State<Home> {
                                                       new MaterialPageRoute(
                                                           builder: (context) =>
                                                               HomePageDetails(
-                                                                  result[
-                                                                      index])));
+                                                                  snapshot.data!.docs[index])));
                                                 },
                                                 child: new Text(
                                                   result[index]["title"],
