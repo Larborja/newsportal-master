@@ -53,7 +53,7 @@ class _In_AllNewsState extends State<In_AllNews> {
                    flex: 1,
                    child: ClipRRect(
                      borderRadius: BorderRadius.circular(15.0),
-                     child: new Image.network(snapshot?[index]["image"],
+                     child: new Image.network(snapshot![index]["image"],
                      height: 170.0,
                        fit: BoxFit.cover,
                      ),
@@ -83,50 +83,53 @@ class _In_AllNewsState extends State<In_AllNews> {
                        ),
                        new SizedBox(height: 15.0,),
                        new Container(
-                         child: new Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: <Widget>[
-                             new Container(
-                               child: new Row(
-                                 children: <Widget>[
-                                   new Icon(Icons.remove_red_eye,
-                                     color: Colors.deepOrange,
-                                   ),
-                                   new SizedBox(width: 5.0,),
-                                   new Text(snapshot?[index]["view"]+"View",
-                                   style: TextStyle(
-                                     fontSize: 14.0,
-                                     color: Colors.blueGrey.withOpacity(1.0)
-                                   ),
-                                   ),
+                         child: SingleChildScrollView(
+                           scrollDirection: Axis.horizontal,
+                           child: new Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: <Widget>[
+                               new Container(
+                                 child: new Row(
+                                   children: <Widget>[
+                                     new Icon(Icons.remove_red_eye,
+                                       color: Colors.deepOrange,
+                                     ),
+                                     new SizedBox(width: 5.0,),
+                                     new Text(snapshot?[index]["view"]+" "+"View",
+                                     style: TextStyle(
+                                       fontSize: 14.0,
+                                       color: Colors.blueGrey.withOpacity(1.0)
+                                     ),
+                                     ),
 
-                                 ],
+                                   ],
+                                 ),
                                ),
-                             ),
-                             new Container(
-                               child: Align(
-                                 alignment: Alignment.bottomRight,
-                                 child: new Container(
-                                   padding: EdgeInsets.all(10.0),
-                                   decoration: new BoxDecoration(
-                                       borderRadius: BorderRadius.circular(15.0),
-                                       color: Colors.blueGrey
-                                   ),
-                                   child: InkWell(
-                                     onTap: (){
-                                       Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>PostDetails(snapshot![index])));
-                                     },
-                                     child: new Text("View Details",
-                                       style: TextStyle(
-                                           fontSize: 15.0,
-                                           color: Colors.white
+                               new Container(
+                                 child: Align(
+                                   alignment: Alignment.bottomRight,
+                                   child: new Container(
+                                     padding: EdgeInsets.all(10.0),
+                                     decoration: new BoxDecoration(
+                                         borderRadius: BorderRadius.circular(15.0),
+                                         color: Colors.blueGrey
+                                     ),
+                                     child: InkWell(
+                                       onTap: (){
+                                         Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>PostDetails(snapshot![index])));
+                                       },
+                                       child: new Text("View Details",
+                                         style: TextStyle(
+                                             fontSize: 15.0,
+                                             color: Colors.white
+                                         ),
                                        ),
                                      ),
                                    ),
                                  ),
-                               ),
-                             )
-                           ],
+                               )
+                             ],
+                           ),
                          ),
                        ),
                      ],

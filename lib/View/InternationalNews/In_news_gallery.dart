@@ -36,7 +36,7 @@ class _In_GalleryState extends State<In_Gallery> {
                 new Container(
                   child: new ClipRRect(
                     borderRadius: BorderRadius.circular(15.0),
-                    child: new Image.network(snapshot?[index]["image"],
+                    child: new Image.network(snapshot?[index]["image"]??"",
                     height: 300.0,
                       fit: BoxFit.cover,
                     ),

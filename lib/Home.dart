@@ -34,8 +34,19 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
+  final List<String>     items= [
+  'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b'
+  'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b',
+'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b',
+'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b',
+'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b',
+
+
+  ];
   @override
   Widget build(BuildContext context) {
+
+    List<int> list = [1, 2, 3, 4, 5];
     return Scaffold(
       appBar: new AppBar(
         title: new Text("GCTU News Portal"),
@@ -266,23 +277,22 @@ class _HomeState extends State<Home> {
             decoration:
                 new BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
             child: Center(
-                // child: Container(
-                //   height: 350.0,
-                //   width: MediaQuery.of(context).size.width,
-                //   child: CarouselSlider(
-                //
-                //     items: [
-                //       NetworkImage('https://images.pexels.com/photos/344029/pexels-photo-344029.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
-                //       NetworkImage('https://images.pexels.com/photos/1618269/pexels-photo-1618269.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
-                //       NetworkImage('https://images.pexels.com/photos/2081007/pexels-photo-2081007.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
-                //       NetworkImage('https://images.pexels.com/photos/1332237/pexels-photo-1332237.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
-                //
-                //     ],
-                //   ),
-                // ),
+                child: Container(
+                  height: 350.0,
+                  width: MediaQuery.of(context).size.width,
+                  child: CarouselSlider(
+
+               options: CarouselOptions(),
+                    items: items
+                        .map((item) => Container(
+                      child: Center(child:   Image.network(item,fit: BoxFit.cover, width: 500)),
+                      color: Colors.transparent,
+                    ))
+                        .toList(),
+                  )),
+                  ),
                 ),
-          ),
-          //second container end..
+                //second container end..
           //Third Container start...
           new Container(
             height: 300.0,
