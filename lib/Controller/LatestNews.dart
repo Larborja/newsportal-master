@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:newsportal/View/InternationalNews/In_all_news.dart' as allnews;
-import 'package:newsportal/View/InternationalNews/In_news_gallery.dart' as gallery;
+import 'package:newsportal/View/LatestNews/In_all_news.dart' as allnews;
+import 'package:newsportal/View/LatestNews/In_news_gallery.dart' as gallery;
 
-class InternationalNews extends StatefulWidget {
+class LatestNews extends StatefulWidget {
   @override
-  _InternationalNewsState createState() => new _InternationalNewsState();
+  _LatestNewsState createState() => new _LatestNewsState();
 }
 
-class _InternationalNewsState extends State<InternationalNews>with SingleTickerProviderStateMixin {
+class _LatestNewsState extends State<LatestNews>with SingleTickerProviderStateMixin {
 
   TabController ?tabController;
 
@@ -26,7 +26,7 @@ class _InternationalNewsState extends State<InternationalNews>with SingleTickerP
     return new Scaffold(
 
       appBar: new AppBar(
-        title: new Text("International News"),
+        title: new Text("Latest News"),
         backgroundColor: Color(0xFF272B4A),
         bottom: new TabBar(
           controller: tabController,
@@ -35,7 +35,7 @@ class _InternationalNewsState extends State<InternationalNews>with SingleTickerP
 
           tabs: <Widget>[
 
-            new Tab(icon: Icon(Icons.next_week),text: "International News",),
+            new Tab(icon: Icon(Icons.next_week),text: "LatestS News",),
             new Tab(icon: Icon(Icons.image),text: "Gallery",)
 
           ],

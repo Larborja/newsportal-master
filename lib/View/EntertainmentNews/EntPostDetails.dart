@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomePageDetails extends StatefulWidget {
-  DocumentSnapshot snapshot;
+class EntPostDetails extends StatefulWidget {
 
-  HomePageDetails(this.snapshot);
+  DocumentSnapshot snapshot;
+  EntPostDetails(this.snapshot);
 
   @override
-  _HomePageDetailsState createState() => new _HomePageDetailsState();
+  _EntPostDetailsState createState() => new _EntPostDetailsState();
 }
 
-class _HomePageDetailsState extends State<HomePageDetails> {
-
+class _EntPostDetailsState extends State<EntPostDetails> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
 
       appBar: new AppBar(
-        title: new Text("Latest Post Details"),
+        title: new Text("Sports Post Details"),
         backgroundColor: Color(0xFF222240),
       ),
       backgroundColor: Color(0xFF222240),
@@ -76,18 +75,20 @@ class _HomePageDetailsState extends State<HomePageDetails> {
                     ],
                   ),
                 ),//end of first container
+                //second container
+                new Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: new Text(widget.snapshot["view"]+" View",
+                    style: TextStyle(
+                        fontSize: 21.0,
+                        color: Colors.deepOrange
+                    ),
+                  ),
+                ),//end of second container..
+
                 new SizedBox(height: 10.0,),
 
-
-                // new Text(widget.snapshot["des"]??'',
-                //   style: TextStyle(
-                //       fontSize: 17.0,
-                //       color: Colors.white
-                //   ),
-                // )
-                //
-                //
-                new Text(widget.snapshot["content"]??'',
+                new Text(widget.snapshot["des"],
                   style: TextStyle(
                       fontSize: 17.0,
                       color: Colors.white
@@ -103,6 +104,4 @@ class _HomePageDetailsState extends State<HomePageDetails> {
 
     );
   }
-
 }
-

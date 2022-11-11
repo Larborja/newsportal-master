@@ -1,11 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:newsportal/Controller/EntertainmentNews.dart';
 import 'dart:async';
 
-import 'Controller/InternationalNews.dart';
+import 'Controller/LatestNews.dart';
 import 'Controller/LocalNews.dart';
 import 'Controller/PoliticNews.dart';
+import 'Controller/SateliteCampusNews.dart';
 import 'Controller/SportsNews.dart';
 import 'HomePostDetails.dart';
 
@@ -35,13 +37,12 @@ class _HomeState extends State<Home> {
   }
 
   final List<String>     items= [
-  'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b'
-  'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b',
-'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b',
-'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b',
-'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/30d086625a1fe5b99706040489c0b89b.jpg?alt=media&token=7b07099c-3c31-4299-9617-3d173390bf7b',
-
-
+    'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/Sports%2Fsports03.jpg?alt=media&token=a90f120d-0953-4f1f-914b-cb57307bd4ac'
+    'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/Entertainment%2Fentertainment01.jpg?alt=media&token=f13eae13-9e36-4c5e-b830-a47704886e78'
+'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/LatestPosts%2Flatestposts02.jpg?alt=media&token=57fe4367-642a-4901-ae54-c7a07db85c95'
+'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/LatestPosts%2Flatestposts01.jpg?alt=media&token=74d03ab5-c319-4fd2-aa2e-b8d9afdfd379'
+'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/LatestPosts%2Flatestposts01.jpg?alt=media&token=74d03ab5-c319-4fd2-aa2e-b8d9afdfd379'
+'https://firebasestorage.googleapis.com/v0/b/gctu-news.appspot.com/o/LatestPosts%2Flatestposts01.jpg?alt=media&token=74d03ab5-c319-4fd2-aa2e-b8d9afdfd379'
   ];
   @override
   Widget build(BuildContext context) {
@@ -168,7 +169,7 @@ class _HomeState extends State<Home> {
 
                         return SizedBox(
                           height: 180,
-                          width: 300,
+                          width: 800,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: snapshot.data?.docs.length,
@@ -214,7 +215,7 @@ class _HomeState extends State<Home> {
                                                                   snapshot.data!.docs[index])));
                                                 },
                                                 child: new Text(
-                                                  result[index]["title"],
+                                                  result[index]["title"]??"",
                                                   maxLines: 1,
                                                   style: TextStyle(
                                                       fontSize: 21.0,
@@ -271,27 +272,27 @@ class _HomeState extends State<Home> {
 
           //second container start...
 
-          new Container(
-            margin: EdgeInsets.all(10.0),
-            height: 150.0,
-            decoration:
-                new BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
-            child: Center(
-                child: Container(
-                  height: 350.0,
-                  width: MediaQuery.of(context).size.width,
-                  child: CarouselSlider(
-
-               options: CarouselOptions(),
-                    items: items
-                        .map((item) => Container(
-                      child: Center(child:   Image.network(item,fit: BoxFit.cover, width: 500)),
-                      color: Colors.transparent,
-                    ))
-                        .toList(),
-                  )),
-                  ),
-                ),
+          // new Container(
+          //   margin: EdgeInsets.all(10.0),
+          //   height: 150.0,
+          //   decoration:
+          //       new BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
+          //   child: Center(
+          //       child: Container(
+          //         height: 350.0,
+          //         width: MediaQuery.of(context).size.width,
+          //         child: CarouselSlider(
+          //
+          //      options: CarouselOptions(),
+          //           items: items
+          //               .map((item) => Container(
+          //             child: Center(child:   Image.network(item,fit: BoxFit.cover, width: 500)),
+          //             color: Colors.transparent,
+          //           ))
+          //               .toList(),
+          //         )),
+          //         ),
+          //       ),
                 //second container end..
           //Third Container start...
           new Container(
@@ -317,10 +318,10 @@ class _HomeState extends State<Home> {
                                 Navigator.of(context).push(
                                     new MaterialPageRoute(
                                         builder: (context) =>
-                                            InternationalNews()));
+                                            LatestNews()));
                               },
                               child: new Text(
-                                "International News",
+                                "Latest News",
                                 style: TextStyle(
                                     fontSize: 19.0, color: Colors.white),
                               ),
@@ -345,10 +346,10 @@ class _HomeState extends State<Home> {
                               onTap: () {
                                 Navigator.of(context).push(
                                     new MaterialPageRoute(
-                                        builder: (context) => Sports()));
+                                        builder: (context) => SatCampusNews()));
                               },
                               child: new Text(
-                                "Sports News",
+                                "Satelite Campus News",
                                 style: TextStyle(
                                     fontSize: 19.0, color: Colors.white),
                               ),
@@ -380,10 +381,10 @@ class _HomeState extends State<Home> {
                               onTap: () {
                                 Navigator.of(context).push(
                                     new MaterialPageRoute(
-                                        builder: (context) => LocalNews()));
+                                        builder: (context) => EntertainmentNews()));
                               },
                               child: new Text(
-                                "Local News",
+                                "Entertainment News",
                                 style: TextStyle(
                                     fontSize: 19.0, color: Colors.white),
                               ),
@@ -408,10 +409,10 @@ class _HomeState extends State<Home> {
                               onTap: () {
                                 Navigator.of(context).push(
                                     new MaterialPageRoute(
-                                        builder: (context) => Politcs()));
+                                        builder: (context) => Sports()));
                               },
                               child: new Text(
-                                "Politics News",
+                                "Sports News",
                                 style: TextStyle(
                                     fontSize: 19.0, color: Colors.white),
                               ),

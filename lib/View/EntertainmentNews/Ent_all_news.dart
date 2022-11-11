@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
-import 'package:newsportal/View/SportsNews/SportPostDetails.dart';
 
-class SportsAllNews extends StatefulWidget {
+import 'EntPostDetails.dart';
+
+
+class EntAllNews extends StatefulWidget {
   @override
-  _SportsAllNewsState createState() => new _SportsAllNewsState();
+  _EntAllNewsState createState() => new _EntAllNewsState();
 }
 
-class _SportsAllNewsState extends State<SportsAllNews> {
+class _EntAllNewsState extends State<EntAllNews> {
   StreamSubscription<QuerySnapshot>?subscription;
 
   List<DocumentSnapshot>?snapshot;
 
-  CollectionReference collectionReference=FirebaseFirestore.instance.collection("InternationalNews");
+  CollectionReference collectionReference=FirebaseFirestore.instance.collection("Entertainment");
 
   @override
   void initState() {
@@ -116,7 +118,7 @@ class _SportsAllNewsState extends State<SportsAllNews> {
                                     ),
                                     child: InkWell(
                                       onTap: (){
-                                        Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>SportsPostDetails(snapshot![index])));
+                                        Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>EntPostDetails(snapshot![index])));
                                       },
                                       child: new Text("View Details",
                                         style: TextStyle(

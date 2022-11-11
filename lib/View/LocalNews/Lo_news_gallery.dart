@@ -13,7 +13,7 @@ class _LocalGalleryState extends State<LocalGallery> {
 
   List<DocumentSnapshot>?snapshot;
 
-  CollectionReference collectionReference=FirebaseFirestore.instance.collection("InternationalNews");
+  CollectionReference collectionReference=FirebaseFirestore.instance.collection("LatestNews");
 
   @override
   void initState() {

@@ -1,13 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newsportal/View/SportsNews/sport_all_news.dart' as allNews;
-import 'package:newsportal/View/SportsNews/sport_news_gallery.dart' as gallery;
+import 'package:newsportal/View/satelitecampusNews/sat_all_news.dart' as allnews;
+import 'package:newsportal/View/satelitecampusNews/sat_news_gallery.dart' as gallery;
 
-class Sports extends StatefulWidget {
+import '../View/LocalNews/Lo_news_gallery.dart';
+
+class SatCampusNews extends StatefulWidget {
+  const SatCampusNews({Key? key}) : super(key: key);
+
   @override
-  _SportsState createState() => new _SportsState();
+  State<SatCampusNews> createState() => _SatCampusNewsState();
 }
 
-class _SportsState extends State<Sports>with SingleTickerProviderStateMixin  {
+class _SatCampusNewsState extends State<SatCampusNews>with SingleTickerProviderStateMixin {
 
   TabController? tabController;
 
@@ -24,14 +29,12 @@ class _SportsState extends State<Sports>with SingleTickerProviderStateMixin  {
   }
 
 
-
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
 
       appBar: new AppBar(
-          title: new Text("Sports News"),
+          title: new Text("Satelite News"),
           backgroundColor: Color(0xFF272B4A),
           bottom: new TabBar(
             controller: tabController,
@@ -40,7 +43,7 @@ class _SportsState extends State<Sports>with SingleTickerProviderStateMixin  {
 
             tabs: <Widget>[
 
-              new Tab(icon: Icon(Icons.next_week),text: "Sports News",),
+              new Tab(icon: Icon(Icons.next_week),text: "Satelite",),
               new Tab(icon: Icon(Icons.image),text: "Gallery",)
 
             ],
@@ -51,12 +54,11 @@ class _SportsState extends State<Sports>with SingleTickerProviderStateMixin  {
         controller: tabController,
         children: <Widget>[
 
-          new allNews.sport_AllNews(),
-          new gallery.sport_Gallery()
+          new allnews.sat_AllNews(),
+          new gallery.sat_Gallery()
         ],
       ),
 
     );
   }
 }
-

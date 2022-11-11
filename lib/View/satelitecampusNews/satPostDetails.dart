@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomePageDetails extends StatefulWidget {
-  DocumentSnapshot snapshot;
 
-  HomePageDetails(this.snapshot);
+class SatPostDetails extends StatefulWidget {
+
+  DocumentSnapshot snapshot;
+  SatPostDetails(this.snapshot);
 
   @override
-  _HomePageDetailsState createState() => new _HomePageDetailsState();
+  _SatPostDetailsState createState() => new _SatPostDetailsState();
 }
 
-class _HomePageDetailsState extends State<HomePageDetails> {
+class _SatPostDetailsState extends State<SatPostDetails> {
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-
+      
       appBar: new AppBar(
-        title: new Text("Latest Post Details"),
+        title: new Text("International Post Details"),
         backgroundColor: Color(0xFF222240),
       ),
       backgroundColor: Color(0xFF222240),
@@ -33,13 +34,13 @@ class _HomePageDetailsState extends State<HomePageDetails> {
             child: new ClipRRect(
               borderRadius: BorderRadius.circular(15.0),
               child: new Image.network(widget.snapshot["image"],
-                height: 250.0,
+              height: 250.0,
                 fit: BoxFit.cover,
               ),
             ),
           ),
           //end first container..
-
+          
           new Container(
             margin: EdgeInsets.all(10.0),
             height: MediaQuery.of(context).size.height,
@@ -54,7 +55,7 @@ class _HomePageDetailsState extends State<HomePageDetails> {
                   child: new Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-
+                      
                       new CircleAvatar(
                         child: new Text(widget.snapshot["title"][0]),
                         foregroundColor: Colors.white,
@@ -76,33 +77,37 @@ class _HomePageDetailsState extends State<HomePageDetails> {
                     ],
                   ),
                 ),//end of first container
+                //second container
+                new Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: new Text(widget.snapshot["view"]+" View",
+                  style: TextStyle(
+                    fontSize: 21.0,
+                    color: Colors.deepOrange
+                  ),
+                  ),
+                ),//end of second container..
+
                 new SizedBox(height: 10.0,),
 
-
-                // new Text(widget.snapshot["des"]??'',
-                //   style: TextStyle(
-                //       fontSize: 17.0,
-                //       color: Colors.white
-                //   ),
-                // )
-                //
-                //
-                new Text(widget.snapshot["content"]??'',
-                  style: TextStyle(
-                      fontSize: 17.0,
-                      color: Colors.white
-                  ),
+                new Text(widget.snapshot["des"],
+                style: TextStyle(
+                  fontSize: 17.0,
+                  color: Colors.white
+                ),
                 )
               ],
             ),
           ),
-
+          
 
         ],
       ),
 
     );
   }
-
 }
+
+
+
 

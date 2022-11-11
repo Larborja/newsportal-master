@@ -14,7 +14,7 @@ class _LocalAllNewsState extends State<LocalAllNews> {
 
   List<DocumentSnapshot>?snapshot;
 
-  CollectionReference collectionReference=FirebaseFirestore.instance.collection("InternationalNews");
+  CollectionReference collectionReference=FirebaseFirestore.instance.collection("LatestNews");
 
   @override
   void initState() {

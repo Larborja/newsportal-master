@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class SportsGallery extends StatefulWidget {
+class EntGallery extends StatefulWidget {
   @override
-  _SportsGalleryState createState() => new _SportsGalleryState();
+  _EntGalleryState createState() => new _EntGalleryState();
 }
 
-class _SportsGalleryState extends State<SportsGallery> {
+class _EntGalleryState extends State<EntGallery> {
 
   StreamSubscription<QuerySnapshot>?subscription;
 
   List<DocumentSnapshot>?snapshot;
 
-  CollectionReference collectionReference=FirebaseFirestore.instance.collection("InternationalNews");
+  CollectionReference collectionReference=FirebaseFirestore.instance.collection("Entertainment");
 
   @override
   void initState() {

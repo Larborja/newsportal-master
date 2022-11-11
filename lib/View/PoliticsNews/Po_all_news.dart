@@ -13,7 +13,7 @@ class _Politica_all_NewsState extends State<Politica_all_News> {
 
   List<DocumentSnapshot>?snapshot;
 
-  CollectionReference collectionReference=FirebaseFirestore.instance.collection("InternationalNews");
+  CollectionReference collectionReference=FirebaseFirestore.instance.collection("LatestNews");
 
   @override
   void initState() {

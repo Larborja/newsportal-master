@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
-import 'package:newsportal/View/InternationalNews/PostDetails.dart';
+
+import 'PostDetails.dart';
 
 class In_AllNews extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _In_AllNewsState extends State<In_AllNews> {
   
   List<DocumentSnapshot>?snapshot;
   
-  CollectionReference collectionReference=FirebaseFirestore.instance.collection("InternationalNews");
+  CollectionReference collectionReference=FirebaseFirestore.instance.collection("LatestPosts");
 
   @override
   void initState() {
@@ -53,7 +54,7 @@ class _In_AllNewsState extends State<In_AllNews> {
                    flex: 1,
                    child: ClipRRect(
                      borderRadius: BorderRadius.circular(15.0),
-                     child: new Image.network(snapshot![index]["image"],
+                     child: new Image.network(snapshot![index]["image"]??"",
                      height: 170.0,
                        fit: BoxFit.cover,
                      ),
