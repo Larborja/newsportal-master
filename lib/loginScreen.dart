@@ -14,13 +14,16 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xffcae8ff),
+        backgroundColor: Color(0xFF272B4A),
+
+
+        //const Color(0xffcae8ff),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
             padding: const EdgeInsets.only(top: 209.0,right: 20,left: 20),
             child: Card(
-              color:  Color(0xFF272B4A),
+              color:     const Color(0xffcae8ff),
                 elevation: 10,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(35.0),
@@ -192,7 +195,7 @@ class LoginScreen extends StatelessWidget {
               children: [
                 CircularProgressIndicator(),
                 Container(
-                    margin: EdgeInsets.only(left: 5), child: Text("Loading")),
+                    margin: EdgeInsets.only(left: 5), child: Text("Loading, kindly wait")),
               ],
             ),
           );

@@ -19,12 +19,15 @@ class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  const Color(0xffcae8ff),
+      backgroundColor:   Color(0xFF272B4A),
+
+
+
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top:188.0,right: 20,left: 15),
           child: Card(
-            color:  Color(0xFF272B4A),
+            color:      const Color(0xffcae8ff),
             elevation: 10,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(35.0),
@@ -35,7 +38,7 @@ class RegistrationScreen extends StatelessWidget {
                   height: 00.0,
                 ),
                 Text(
-                  "S.I.M.S",
+                  "GCTU News Portal",
                   style: TextStyle(
                       fontSize: 30.0,
                       fontFamily: "Gilroy",
