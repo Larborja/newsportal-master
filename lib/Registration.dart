@@ -37,20 +37,14 @@ class RegistrationScreen extends StatelessWidget {
                 SizedBox(
                   height: 00.0,
                 ),
+                Image.asset("assets/images/logo.png"),
+
                 Text(
-                  "GCTU News Portal",
+                  "News Portal",
                   style: TextStyle(
-                      fontSize: 30.0,
+                      fontSize: 20.0,
                       fontFamily: "Gilroy",
                       fontWeight: FontWeight.w700,
-                      color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  "",
-                  style: TextStyle(
-                      fontSize: 10.0,
-                      fontFamily: "Brand Bold",
                       color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
@@ -65,21 +59,23 @@ class RegistrationScreen extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         decoration: BoxDecoration(
+                          color:   Color(0xFF272B4A),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(color: Colors.black)),
                         child: TextField(
                           onChanged: (value) {
                             _name= value;
                           },
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.amber),
                           controller: nameTextEditingController,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
+
                               border: InputBorder.none,
                               //      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
                               labelText: "Name",
                               labelStyle: TextStyle(
-                                color: Colors.black,
+                                color: Colors.amber,
                                 fontSize: 14.0,
                               ),
                               hintStyle: TextStyle(
@@ -97,10 +93,11 @@ class RegistrationScreen extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         decoration: BoxDecoration(
+                          color:   Color(0xFF272B4A),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(color: Colors.black)),
                         child: TextField(
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.amber),
 
                             onChanged: (value) {
                               _email= value;
@@ -112,7 +109,7 @@ class RegistrationScreen extends StatelessWidget {
                               //enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
                               labelText: "Email",
                               labelStyle: TextStyle(
-                                color: Colors.black,
+                                color: Colors.amber,
                                 fontSize: 14.0,
                               ),
                               hintStyle: TextStyle(
@@ -130,20 +127,21 @@ class RegistrationScreen extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         decoration: BoxDecoration(
+                          color:   Color(0xFF272B4A),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(color: Colors.black)),
                         child: TextField(
                           onChanged: (value) {
                             _mobileNumber= value;
                           },
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.amber),
                           controller: phoneTextEditingController,
                           keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               labelText: "Phone",
                               labelStyle: TextStyle(
-                                color: Colors.black,
+                                color: Colors.amber,
                                 fontSize: 14.0,
                               ),
                               hintStyle: TextStyle(
@@ -161,20 +159,21 @@ class RegistrationScreen extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         decoration: BoxDecoration(
+                          color:   Color(0xFF272B4A),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(color: Colors.black)),
                         child: TextField(
                           onChanged: (value) {
                             _password= value;
                           },
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.amber),
                           controller: passwordTextEditingController,
                           obscureText: true,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               labelText: "Password",
                               labelStyle: TextStyle(
-                                color: Colors.black,
+                                color: Colors.amber,
                                 fontSize: 14.0,
                               ),
                               hintStyle: TextStyle(
@@ -189,7 +188,7 @@ class RegistrationScreen extends StatelessWidget {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xffcae8ff),
+                        backgroundColor:   Color(0xFF272B4A),
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(24.0),
                         ),
@@ -203,7 +202,7 @@ class RegistrationScreen extends StatelessWidget {
                           child: Text(
                             "Register",
                             style: TextStyle(
-                              color: Colors.black38,
+                              color: Colors.amber,
                                 fontSize: 18.0, fontFamily: "Brand Bold"),
                           ),
                         ),
@@ -231,7 +230,7 @@ class RegistrationScreen extends StatelessWidget {
                   ]),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: GestureDetector(
                     onTap: (){
                       Navigator.pushNamedAndRemoveUntil(
@@ -247,7 +246,7 @@ class RegistrationScreen extends StatelessWidget {
                     // },
                     child: Text("Do You Already Have An Account? Login",
                     style: TextStyle(
-                      color: Colors.black38
+                      color: Colors.black
                     ),),
                   ),
                 ),
