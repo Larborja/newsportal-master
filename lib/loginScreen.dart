@@ -36,19 +36,11 @@ class LoginScreen extends StatelessWidget {
                     ),
 
                     Image.asset("assets/images/logo.png"),
+
                     Text(
-                      "GCTU News Portal",
+                      "News Portal",
                       style: TextStyle(
-                          fontSize: 30.0,
-                          fontFamily: "Gilroy",
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      "",
-                      style: TextStyle(
-                          fontSize: 10.0,
+                          fontSize: 20.0,
                           fontFamily: "Gilroy",
                           fontWeight: FontWeight.w700,
                           color: Colors.black),
@@ -56,22 +48,23 @@ class LoginScreen extends StatelessWidget {
                     ),
                     Column(children: [
                       SizedBox(
-                        height: 45.0,
+                        height: 20.0,
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         decoration: BoxDecoration(
+                          color:  Color(0xFF272B4A),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(color: Colors.black)),
                         child: TextField(
-                          style: TextStyle(color: Colors.black38),
+                          style: TextStyle(color: Colors.amber),
                           controller: emailTextEditingController,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             labelText: 'Email',
                             labelStyle: TextStyle(
-                              color: Colors.black,
+                              color: Colors.amber,
                               fontSize: 14.0,
                             ),
                           ),
@@ -83,17 +76,18 @@ class LoginScreen extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         decoration: BoxDecoration(
+                          color:  Color(0xFF272B4A),
                             borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Colors.black)),
+                            border: Border.all(color:  Color(0xFF272B4A))),
                         child: TextField(
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.amber),
                           controller: passwordTextEditingController,
                           obscureText: true,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             labelText: "Password",
                             labelStyle: TextStyle(
-                              color: Colors.black,
+                              color: Colors.amber,
                               fontSize: 14.0,
                             ),
                             // border: OutlineInputBorder(
@@ -137,12 +131,12 @@ class LoginScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(100),
                               // side: BorderSide(color: bcolor)
                             ),
-                            backgroundColor: Color(0xffcae8ff),
+                            backgroundColor:  Color(0xFF272B4A),
                           ),
                           child: Text(
                             'Login',
                             style: TextStyle(
-                                color: Colors.black38,
+                                color: Colors.amber,
                                 fontFamily: 'Manrope',
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16),
@@ -169,15 +163,18 @@ class LoginScreen extends StatelessWidget {
                     //     onPressed: () {
                     //
                     //     },
-                     GestureDetector(
-                       onTap: (){
+                     Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: GestureDetector(
+                         onTap: (){
 
-                         Navigator.pushNamedAndRemoveUntil(context, '/registration', (route) => false);
-                       },
-                       child: Text(
-                            'Do You Have An Account? Register',
-                            style: TextStyle(color: Colors.black38),
-                          ),
+                           Navigator.pushNamedAndRemoveUntil(context, '/registration', (route) => false);
+                         },
+                         child: Text(
+                              'Do You Have An Account? Register',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                       ),
                      )
                   ]),
                 )),
