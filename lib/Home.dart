@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newsportal/Controller/EntertainmentNews.dart';
@@ -131,6 +132,64 @@ class _HomeState extends State<Home> {
                   size: 20.0,
                 ),
               ),
+              IconButton(
+                  icon: const Icon(
+                    Icons.power_settings_new,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    showDialog<void>(
+                      context: context,
+                      barrierDismissible: false,
+                      // user must tap button!
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.circular(30),
+                          ),
+                          title: Text('Sign Out'),
+                          backgroundColor: Colors.white,
+                          content: SingleChildScrollView(
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                    'Are you certain you want to Sign Out?'),
+                              ],
+                            ),
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text(
+                                'Yes',
+                                style: TextStyle(
+                                    color: Colors.black),
+                              ),
+                              onPressed: () {
+                                print('yes');
+                                FirebaseAuth.instance.signOut();
+                                Navigator.pushNamedAndRemoveUntil(
+                                    context,
+                                    '/login',
+                                        (route) => false);
+                                // Navigator.of(context).pop();
+                              },
+                            ),
+                            TextButton(
+                              child: Text(
+                                'Cancel',
+                                style:
+                                TextStyle(color: Colors.red),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }),
             ],
           ),
         ),

@@ -34,6 +34,8 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       height: 00.0,
                     ),
+
+                    Image.asset("assets/images/logo.png"),
                     Text(
                       "GCTU News Portal",
                       style: TextStyle(
@@ -191,11 +193,12 @@ class LoginScreen extends StatelessWidget {
         barrierDismissible: false,
         builder: (BuildContext context) {
           AlertDialog alert = AlertDialog(
+            backgroundColor: Colors.black,
             content: new Row(
               children: [
-                CircularProgressIndicator(),
+                CircularProgressIndicator(color: Colors.white,),
                 Container(
-                    margin: EdgeInsets.only(left: 5), child: Text("Loading, kindly wait")),
+                    margin: EdgeInsets.only(left: 5), child: Text("Loading, kindly wait", style:TextStyle(color: Colors.white))),
               ],
             ),
           );
